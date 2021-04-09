@@ -1,4 +1,15 @@
-const { ApolloServer, gql } = require("apollo-server");
+const { ApolloServer, ApolloError, gql } = require("apollo-server");
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+
+var admin = require("firebase-admin");
+
+var serviceAccount = require("./service-account-file.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://angelbernalesquivel-ecf4b-default-rtdb.firebaseio.com",
+});
 
 const libraries = [
   {
@@ -27,6 +38,13 @@ const books = [
 
 // Schema definition
 const typeDefs = gql`
+  type Cat {
+    name: String
+    lifespan: String
+    weigth: String
+    description: String
+  }
+
   # A library has a branch and books
   type Library {
     branch: String!
@@ -47,18 +65,13 @@ const typeDefs = gql`
 
   # Queries can fetch a list of libraries
   type Query {
+    cats: [Cat]
     libraries: [Library]
   }
 `;
 
 // Resolver map
 const resolvers = {
-  Query: {
-    libraries() {
-      // Return our hardcoded array of libraries
-      return libraries;
-    },
-  },
   Library: {
     books(parent) {
       // Filter the hardcoded array of books to only include
@@ -77,6 +90,31 @@ const resolvers = {
     },
   },
 
+  Query: {
+    async cats(name) {
+      try {
+        const listCats = await admin.firestore().collection("cats").get();
+
+        const docRef = admin.firestore().collection("users").doc("alovelace");
+        await docRef.set({
+          first: "Ada",
+          last: "Lovelace",
+          born: 1815,
+        });
+
+        const snapshot = await admin.firestore().collection("users").get();
+        console.log(snapshot);
+
+        return listCats.docs.map((cat) => cat.data());
+      } catch (error) {
+        throw new ApolloError(error);
+      }
+    },
+    libraries() {
+      // Return our hardcoded array of libraries
+      return libraries;
+    },
+  },
   // Because Book.author returns an object with a "name" field,
   // Apollo Server's default resolver for Author.name will work.
   // We don't need to define one.
@@ -84,7 +122,10 @@ const resolvers = {
 
 // Pass schema definition and resolvers to the
 // ApolloServer constructor
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
 
 // Launch the server
 server.listen().then(({ url }) => {

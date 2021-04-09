@@ -1,0 +1,22 @@
+{
+  "cats": {
+    "abyssinian": {
+      "description": "The abyssinian is easy",
+      "lifespan": "3years",
+      "name": "abyssinian",
+      "weigth": "3pounds"
+    },
+    "american": {
+      "description": "The american is hard",
+      "lifespan": "3years",
+      "name": "american",
+      "weigth": "5pounds"
+    },
+    "bambino": {
+      "description": "The bambino",
+      "lifespan": " 10 years",
+      "name": "bambino",
+      "weigth": "9 pounds"
+    }
+  }
+}
