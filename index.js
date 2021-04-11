@@ -1,4 +1,4 @@
-const { ApolloServer, ApolloError, gql } = require("apollo-server");
+const { ApolloServer, ApolloError, gql, MockList } = require("apollo-server");
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 
@@ -63,10 +63,17 @@ const typeDefs = gql`
     name: String!
   }
 
+  type Image {
+    id: ID!
+    title: String!
+    url: String
+  }
+
   # Queries can fetch a list of libraries
   type Query {
     cats: [Cat]
     libraries: [Library]
+    images: [Image]
   }
 `;
 
@@ -120,11 +127,23 @@ const resolvers = {
   // We don't need to define one.
 };
 
+const mocks = {
+  Query: () => ({
+    images: () => new MockList([6, 9]),
+  }),
+  Image: () => ({
+    title: () => "Astro Kitty, Space Explorer 01",
+    url: () =>
+      "https://res.cloudinary.com/dety84pbu/image/upload/v1606816219/kitty-veyron-sm_mctf3c.jpg",
+  }),
+};
 // Pass schema definition and resolvers to the
 // ApolloServer constructor
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  mocks,
+  mockEntireSchema: false,
 });
 
 // Launch the server
