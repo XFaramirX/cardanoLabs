@@ -117,6 +117,15 @@ const resolvers = {
         throw new ApolloError(error);
       }
     },
+    async images() {
+      try {
+        const images = await admin.firestore().collection("images").get();
+
+        return images.docs.map((image) => image.data());
+      } catch (error) {
+        throw new ApolloError(error);
+      }
+    },
     libraries() {
       // Return our hardcoded array of libraries
       return libraries;
@@ -142,11 +151,11 @@ const mocks = {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  mocks,
-  mockEntireSchema: false,
+  // mocks,
+  // mockEntireSchema: false,
 });
 
 // Launch the server
-server.listen().then(({ url }) => {
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
