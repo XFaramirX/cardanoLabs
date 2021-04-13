@@ -20,7 +20,6 @@ const libraries = [
   },
 ];
 
-// The branch field of a book indicates which library has it in stock
 const books = [
   {
     id: 1,
