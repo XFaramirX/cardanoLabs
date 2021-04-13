@@ -1,0 +1,5 @@
+# import Image from "schema/homepage.graphql"
+
+type Query {
+  images: [Image]
+}
