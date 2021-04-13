@@ -1,10 +1,14 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import "@babel/polyfill";
+
 const { ApolloServer, ApolloError, gql, MockList } = require("apollo-server");
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 
-var admin = require("firebase-admin");
+const admin = require("firebase-admin");
 
-var serviceAccount = require("./service-account-file.json");
+const serviceAccount = require("../service-account-file.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
