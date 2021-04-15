@@ -26,8 +26,6 @@ const getArtist = {
     // Is mandatory to have the field artist on the firebase image/collection
 
     try {
-      console.log(parent.artist.id);
-
       const artist = await admin
         .firestore()
         .collection("artist")

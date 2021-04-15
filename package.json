@@ -7,7 +7,8 @@
     "test": "jest",
     "build": "webpack --config webpack.config.js",
     "dev": "webpack --watch --config webpack.config.js",
-    "start": "node ./dist/main.js"
+    "start": "node ./dist/main.js",
+    "deploy": "git push heroku master"
   },
   "keywords": [],
   "author": "",
