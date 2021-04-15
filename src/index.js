@@ -22,7 +22,7 @@ import mocks from "../test/mocks";
 
 const server = new ApolloServer({
   schema: schemaWithResolvers,
-  graphiql: true,
+  graphiql: false,
   tracing: true,
   playground: {
     settings: {
