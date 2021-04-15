@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "webpack --config webpack.config.js",
     "dev": "webpack --watch --config webpack.config.js",
     "start": "node ./dist/main.js"
@@ -16,6 +16,7 @@
     "@babel/polyfill": "^7.12.1",
     "@babel/runtime": "^7.13.10",
     "apollo-server": "^2.22.2",
+    "apollo-server-testing": "^2.22.2",
     "firebase-admin": "^9.6.0",
     "graphql": "^15.5.0",
     "regenerator-runtime": "^0.13.7"
@@ -29,7 +30,9 @@
     "@types/regenerator-runtime": "^0.13.0",
     "babel-loader": "^8.2.2",
     "core-js": "^3.10.1",
+    "dotenv": "^8.2.0",
     "graphql-tools": "^7.0.4",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.7",
     "nodemon-webpack-plugin": "^4.5.2",
     "webpack": "^5.32.0",
