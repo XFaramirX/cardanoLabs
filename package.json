@@ -5,7 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "test": "jest",
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js && yarn test",
     "dev": "webpack --watch --config webpack.config.js",
     "start": "node ./dist/main.js",
     "deploy": "git push heroku master"
