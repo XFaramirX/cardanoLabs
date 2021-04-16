@@ -2,5 +2,4 @@
 
 type Query {
   images: [Image]
-  artist: Artist
 }

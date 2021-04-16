@@ -10,38 +10,36 @@ admin.initializeApp({
 });
 // Resolver map
 
-const getImages = {
-  async images() {
-    try {
-      const images = await admin.firestore().collection("images").get();
-      return images.docs.map((image) => image.data());
-    } catch (error) {
-      throw new ApolloError(error);
-    }
-  },
-};
+async function images(parent) {
+  try {
+    const images = await admin.firestore().collection("images").get();
+    return images.docs.map((image) => image.data());
+  } catch (error) {
+    throw new ApolloError(error);
+  }
+}
 
-const getArtist = {
-  async artist(parent) {
-    // Is mandatory to have the field artist on the firebase image/collection
+async function getArtist(parent) {
+  try {
+    const artist = await admin
+      .firestore()
+      .collection("artist")
+      .doc(parent.artist.id.replace(/ /g, ""))
+      .get();
 
-    try {
-      const artist = await admin
-        .firestore()
-        .collection("artist")
-        .doc(parent.artist.id.replace(/ /g, ""))
-        .get();
-
-      return artist.data();
-    } catch (error) {
-      throw new ApolloError(error);
-    }
-  },
-};
+    return artist.data();
+  } catch (error) {
+    throw new ApolloError(error);
+  }
+}
 
 const resolvers = {
-  Query: getImages,
-  Image: getArtist,
+  Query: {
+    images,
+  },
+  Image: {
+    artist: getArtist,
+  },
 };
 
 export default resolvers;
