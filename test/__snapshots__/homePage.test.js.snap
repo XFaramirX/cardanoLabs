@@ -1,30 +1,199 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Fetches Images 1`] = `
+exports[`Fetches All Artist 1`] = `
 Object {
   "data": Object {
-    "images": Array [
+    "getAllArtist": Array [
       Object {
+        "id": "1",
+        "images": Array [
+          Object {
+            "attributes": Array [
+              "Oleo Painting",
+              "Rarity 5 out of 7",
+              "Edition 1 out of 12",
+              "Colombia",
+            ],
+            "createdBy": "BernalEsquivel01",
+            "description": "Oleo Painting made by artist angel bernal colombia bogota. Selling as NFT",
+            "id": "01",
+            "title": "BernalEsquivel01",
+            "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/BestLandscape.jpg?alt=media&token=e25df19b-4818-4adb-ab70-8143949a0d87",
+          },
+          Object {
+            "attributes": null,
+            "createdBy": "BernalEsquivel01",
+            "description": null,
+            "id": "04",
+            "title": "Bernal04",
+            "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/OleoPainting.jpg?alt=media&token=44836ff5-38a8-45ba-9253-c5cbb51427f3",
+          },
+        ],
+        "instagram": "https://www.facebook.com/David.B.Bernal/",
+        "name": "BernalEsquivel01",
+      },
+      Object {
+        "id": "2",
+        "images": Array [
+          Object {
+            "attributes": null,
+            "createdBy": "EvaAcosta",
+            "description": "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi delectus magnam temporibus, adipisci cupiditate libero soluta, sint sed velit ullam minima aperiam veniam? Maxime id eligendi quia, tempora quis facilis!",
+            "id": "03",
+            "title": "Bernal03",
+            "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/MountainWarrior2005-2017.jpg?alt=media&token=9b398009-df06-4c9f-8f6c-190c735fbf8e",
+          },
+        ],
+        "instagram": null,
+        "name": "EvaAcosta",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Fetches All Images 1`] = `
+Object {
+  "data": Object {
+    "getImages": Array [
+      Object {
+        "attributes": Array [
+          "Oleo Painting",
+          "Rarity 5 out of 7",
+          "Edition 1 out of 12",
+          "Colombia",
+        ],
+        "createdBy": "BernalEsquivel01",
+        "description": "Oleo Painting made by artist angel bernal colombia bogota. Selling as NFT",
         "id": "01",
         "title": "BernalEsquivel01",
         "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/BestLandscape.jpg?alt=media&token=e25df19b-4818-4adb-ab70-8143949a0d87",
       },
       Object {
+        "attributes": null,
+        "createdBy": "EvaAcosta",
+        "description": "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi delectus magnam temporibus, adipisci cupiditate libero soluta, sint sed velit ullam minima aperiam veniam? Maxime id eligendi quia, tempora quis facilis!",
         "id": "03",
         "title": "Bernal03",
         "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/MountainWarrior2005-2017.jpg?alt=media&token=9b398009-df06-4c9f-8f6c-190c735fbf8e",
       },
       Object {
+        "attributes": null,
+        "createdBy": null,
+        "description": null,
         "id": "05",
         "title": "Bernal05",
         "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/Symbol.jpg?alt=media&token=600e4c09-55ca-4b0b-bcac-88e0308c6f81",
       },
       Object {
+        "attributes": null,
+        "createdBy": null,
+        "description": null,
         "id": "02",
         "title": "bernal02",
         "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/CaminantesPutimaes.jpg?alt=media&token=4e416115-b3c0-4cbe-b0bc-c10b2259e193",
       },
       Object {
+        "attributes": null,
+        "createdBy": "BernalEsquivel01",
+        "description": null,
+        "id": "04",
+        "title": "Bernal04",
+        "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/OleoPainting.jpg?alt=media&token=44836ff5-38a8-45ba-9253-c5cbb51427f3",
+      },
+    ],
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Fetches Artist By ID 1`] = `
+Object {
+  "data": Object {
+    "getArtist": Object {
+      "id": "2",
+      "images": Array [
+        Object {
+          "attributes": null,
+          "createdBy": "EvaAcosta",
+          "description": "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi delectus magnam temporibus, adipisci cupiditate libero soluta, sint sed velit ullam minima aperiam veniam? Maxime id eligendi quia, tempora quis facilis!",
+          "id": "03",
+          "title": "Bernal03",
+          "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/MountainWarrior2005-2017.jpg?alt=media&token=9b398009-df06-4c9f-8f6c-190c735fbf8e",
+        },
+      ],
+      "instagram": null,
+      "name": "EvaAcosta",
+    },
+  },
+  "errors": undefined,
+  "extensions": undefined,
+  "http": Object {
+    "headers": Headers {
+      Symbol(map): Object {},
+    },
+  },
+}
+`;
+
+exports[`Fetches Images 1`] = `
+Object {
+  "data": Object {
+    "getImages": Array [
+      Object {
+        "attributes": Array [
+          "Oleo Painting",
+          "Rarity 5 out of 7",
+          "Edition 1 out of 12",
+          "Colombia",
+        ],
+        "createdBy": "BernalEsquivel01",
+        "description": "Oleo Painting made by artist angel bernal colombia bogota. Selling as NFT",
+        "id": "01",
+        "title": "BernalEsquivel01",
+        "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/BestLandscape.jpg?alt=media&token=e25df19b-4818-4adb-ab70-8143949a0d87",
+      },
+      Object {
+        "attributes": null,
+        "createdBy": "EvaAcosta",
+        "description": "    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi delectus magnam temporibus, adipisci cupiditate libero soluta, sint sed velit ullam minima aperiam veniam? Maxime id eligendi quia, tempora quis facilis!",
+        "id": "03",
+        "title": "Bernal03",
+        "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/MountainWarrior2005-2017.jpg?alt=media&token=9b398009-df06-4c9f-8f6c-190c735fbf8e",
+      },
+      Object {
+        "attributes": null,
+        "createdBy": null,
+        "description": null,
+        "id": "05",
+        "title": "Bernal05",
+        "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/Symbol.jpg?alt=media&token=600e4c09-55ca-4b0b-bcac-88e0308c6f81",
+      },
+      Object {
+        "attributes": null,
+        "createdBy": null,
+        "description": null,
+        "id": "02",
+        "title": "bernal02",
+        "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/CaminantesPutimaes.jpg?alt=media&token=4e416115-b3c0-4cbe-b0bc-c10b2259e193",
+      },
+      Object {
+        "attributes": null,
+        "createdBy": "BernalEsquivel01",
+        "description": null,
         "id": "04",
         "title": "Bernal04",
         "url": "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/OleoPainting.jpg?alt=media&token=44836ff5-38a8-45ba-9253-c5cbb51427f3",

@@ -1,14 +1,15 @@
-type Image {
+type Artist {
   id: ID!
+  name: String
+  instagram: String
+  images: [Image]
+}
+
+type Image {
+  id: ID
   title: String
   url: String!
   attributes: [String]
   description: String
-  artist: Artist
-}
-
-type Artist {
-  id: ID
-  name: String
-  instagram: String
+  createdBy: String
 }

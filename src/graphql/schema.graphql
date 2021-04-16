@@ -1,5 +1,7 @@
 # import Image,Artist from "schema/homepage.graphql"
 
 type Query {
-  images: [Image]
+  getAllArtist: [Artist]
+  getArtist(id: ID!): Artist
+  getImages: [Image]
 }

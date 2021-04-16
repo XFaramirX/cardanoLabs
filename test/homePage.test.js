@@ -42,23 +42,66 @@ const mocks = {
   }),
 };
 
-it("Fetches Images", async () => {
-  const FIND_USER = gql`
+it("Fetches All Images", async () => {
+  const GET_IMAGES = gql`
     query {
-      images {
+      getImages {
         id
         title
         url
+        attributes
+        description
+        createdBy
       }
     }
   `;
 
-  const res = await query({ query: FIND_USER });
-  expect(res.data.images[0]).toEqual({
-    id: "01",
-    title: "BernalEsquivel01",
-    url:
-      "https://firebasestorage.googleapis.com/v0/b/angelbernalesquivel-0001.appspot.com/o/BestLandscape.jpg?alt=media&token=e25df19b-4818-4adb-ab70-8143949a0d87",
-  });
-  expect(res).toMatchSnapshot();
+  const response = await query({ query: GET_IMAGES });
+  expect(response).toMatchSnapshot();
+});
+
+it("Fetches All Artist", async () => {
+  const GET_ALL_ARTIST = gql`
+    query {
+      getAllArtist {
+        id
+        name
+        instagram
+        images {
+          id
+          title
+          url
+          attributes
+          description
+          createdBy
+        }
+      }
+    }
+  `;
+
+  const response = await query({ query: GET_ALL_ARTIST });
+  expect(response).toMatchSnapshot();
+});
+
+it("Fetches Artist By ID", async () => {
+  const GET_ALL_ARTIST = gql`
+    query {
+      getArtist(id: "UVrxdwKDO4MmjXizLSjV") {
+        id
+        name
+        instagram
+        images {
+          id
+          title
+          url
+          attributes
+          description
+          createdBy
+        }
+      }
+    }
+  `;
+
+  const response = await query({ query: GET_ALL_ARTIST });
+  expect(response).toMatchSnapshot();
 });

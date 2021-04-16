@@ -10,24 +10,52 @@ admin.initializeApp({
 });
 // Resolver map
 
-async function images(parent) {
+const db = admin.firestore();
+
+async function getImages(parent, args, context, info) {
+  const imagesRef = await db.collection("images").get();
   try {
-    const images = await admin.firestore().collection("images").get();
-    return images.docs.map((image) => image.data());
+    if (!imagesRef.docs[0].exists) {
+      // No document exist
+    } else {
+      return imagesRef.docs.map((image) => image.data());
+    }
   } catch (error) {
     throw new ApolloError(error);
   }
 }
 
-async function getArtist(parent) {
-  try {
-    const artist = await admin
-      .firestore()
-      .collection("artist")
-      .doc(parent.artist.id.replace(/ /g, ""))
-      .get();
+async function getArtist(parent, args, context, info) {
+  const artists = await admin
+    .firestore()
+    .collection("artist")
+    .doc(args.id)
+    .get();
 
-    return artist.data();
+  try {
+    if (!artists.exists) {
+      // No document exist
+    } else {
+      return artists.data();
+    }
+  } catch (error) {
+    throw new ApolloError(error);
+  }
+}
+
+async function getAllArtist(parent, args, context, info) {
+  try {
+    const artistList = await admin.firestore().collection("artist").get();
+    return artistList.docs.map((artist) => artist.data());
+  } catch (error) {
+    throw new ApolloError(error);
+  }
+}
+async function getImagesbyArtist(parent, args, context, info) {
+  const imagesRef = await db.collection("images").get();
+  try {
+    const result = imagesRef.docs.map((image) => image.data());
+    return result.filter((res) => res.createdBy == parent.name);
   } catch (error) {
     throw new ApolloError(error);
   }
@@ -35,10 +63,12 @@ async function getArtist(parent) {
 
 const resolvers = {
   Query: {
-    images,
+    getAllArtist,
+    getArtist,
+    getImages,
   },
-  Image: {
-    artist: getArtist,
+  Artist: {
+    images: getImagesbyArtist,
   },
 };
 
